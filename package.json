@@ -3,13 +3,27 @@
   "version": "1.0.0",
   "description": "",
   "main": "index.js",
-  "scripts": {},
+  "scripts": {
+    "test": "npx playwright test",
+    "test:login": "npx playwright test src/tests/login.spec.js",
+    "test:api": "npx playwright test src/tests/smoke.spec.js src/tests/contract.spec.js src/tests/health.spec.js src/tests/negative.spec.js src/tests/performance.spec.js --reporter=list",
+    "test:api:smoke": "npx playwright test src/tests/smoke.spec.js --reporter=list",
+    "test:api:contract": "npx playwright test src/tests/contract.spec.js --reporter=list",
+    "test:api:health": "npx playwright test src/tests/health.spec.js --reporter=list",
+    "test:api:negative": "npx playwright test src/tests/negative.spec.js --reporter=list",
+    "test:api:performance": "npx playwright test src/tests/performance.spec.js --reporter=list",
+    "test:ci": "npx playwright test src/tests/smoke.spec.js src/tests/contract.spec.js src/tests/health.spec.js src/tests/negative.spec.js src/tests/performance.spec.js --reporter=html --reporter=json --reporter=list",
+    "prepare": "husky install",
+    "test:prepush": "npm run test:api:smoke"
+  },
   "keywords": [],
   "author": "",
   "license": "ISC",
   "type": "commonjs",
   "devDependencies": {
     "@playwright/test": "^1.60.0",
-    "@types/node": "^25.9.1"
+    "@types/node": "^25.9.1",
+    "husky": "^8.0.0"
   }
 }
+  
